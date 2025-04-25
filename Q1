@@ -1,0 +1,54 @@
+#include <stdio.h>
+#define size 6
+
+int LinSearch(int array[], int t)
+{
+    for(int i=0; i<size;i++)
+    {
+        if(array[i]==t)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+int binSearch(int array[],int t)
+{
+    int s=0, e=size-1;
+    int mid=(s+e)/2;
+    
+    while(s<=e)
+    {
+        int mid=(s+e)/2;
+        if(array[mid]==t)
+        {
+            return mid;
+        }
+        else if(array[mid]>t)
+        {
+            e=mid-1;
+        }
+        else
+        {
+            s=mid+1;
+        }
+    }
+    return mid;
+}
+int main() {
+    
+    int arr[size] = {10,20,30,40,50,70};
+    printf("Array is - \n");
+    for(int i=0; i<size;i++)
+    {
+        printf("%d ",arr[i]);
+    }
+    
+    int ans = LinSearch(arr,70);
+    printf("\nIndex of 70 is %d\n",ans);
+    
+    printf("40 is at index %d",binSearch(arr,40));
+    
+    
+    return 0;
+}
